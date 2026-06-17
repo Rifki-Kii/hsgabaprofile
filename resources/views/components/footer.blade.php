@@ -18,7 +18,7 @@
                         <span class="text-blue-700 font-bold text-lg">H</span>
                     </div>
                     <h2 class="font-bold text-xl text-white">
-                        HSG ABA
+                        HSG
                     </h2>
                 </div>
                 <p class="text-blue-200 text-sm leading-relaxed">
