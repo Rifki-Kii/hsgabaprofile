@@ -9,6 +9,8 @@ use App\Livewire\Admin\FacilityManager;
 use App\Livewire\Admin\GalleryManager;
 use App\Livewire\Admin\FaqManager;
 use App\Livewire\Admin\SettingManager;
+use App\Livewire\Admin\AcademicSubjectManager;
+use App\Livewire\Admin\ExtracurricularManager;
 use App\Models\Setting;
 use App\Models\HeroSlide;
 use App\Models\Program;
@@ -25,8 +27,10 @@ Route::get('/', function () {
     $facilities = Facility::orderBy('sort_order')->orderBy('id')->get();
     $galleryItems = GalleryItem::orderBy('sort_order')->orderBy('id')->get();
     $faqs = Faq::orderBy('sort_order')->orderBy('id')->get();
+    $academicSubjects = \App\Models\AcademicSubject::orderBy('sort_order')->orderBy('id')->get();
+    $extracurriculars = \App\Models\Extracurricular::orderBy('sort_order')->orderBy('id')->get();
 
-    return view('pages.home', compact('settings', 'heroSlides', 'programs', 'facilities', 'galleryItems', 'faqs'));
+    return view('pages.home', compact('settings', 'heroSlides', 'programs', 'facilities', 'galleryItems', 'faqs', 'academicSubjects', 'extracurriculars'));
 });
 
 // Admin Panel Routes
@@ -44,6 +48,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/gallery', GalleryManager::class)->name('gallery');
     Route::get('/faqs', FaqManager::class)->name('faqs');
     Route::get('/settings', SettingManager::class)->name('settings');
+    Route::get('/academic-subjects', AcademicSubjectManager::class)->name('academic-subjects');
+    Route::get('/extracurriculars', ExtracurricularManager::class)->name('extracurriculars');
 
     Route::post('/logout', function () {
         Auth::logout();

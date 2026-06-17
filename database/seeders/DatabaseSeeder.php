@@ -9,6 +9,8 @@ use App\Models\Program;
 use App\Models\Facility;
 use App\Models\GalleryItem;
 use App\Models\Faq;
+use App\Models\AcademicSubject;
+use App\Models\Extracurricular;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -332,6 +334,97 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($faqs as $faq) {
             Faq::create($faq);
+        }
+
+        // 8. Seed Academic Subjects
+        AcademicSubject::truncate();
+        $academicSubjects = [
+            [
+                'name' => 'Matematika',
+                'icon' => 'fas fa-calculator',
+                'focus' => 'Logika & Analisis',
+                'description' => 'Melatih penalaran logis dan pemecahan masalah secara aplikatif.',
+                'sort_order' => 1,
+            ],
+            [
+                'name' => 'Bahasa Indonesia',
+                'icon' => 'fas fa-pen-fancy',
+                'focus' => 'Karakter & Literasi',
+                'description' => 'Mengembangkan kemampuan berkomunikasi dan apresiasi sastra.',
+                'sort_order' => 2,
+            ],
+            [
+                'name' => 'Bahasa Inggris',
+                'icon' => 'fas fa-language',
+                'focus' => 'Komunikasi Global',
+                'description' => 'Fokus pada percakapan aktif untuk membangun rasa percaya diri.',
+                'sort_order' => 3,
+            ],
+            [
+                'name' => 'IPA / Sains',
+                'icon' => 'fas fa-flask',
+                'focus' => 'Tadabbur Alam',
+                'description' => 'Mengamati kebesaran Allah melalui sains dan alam sekitar.',
+                'sort_order' => 4,
+            ],
+            [
+                'name' => 'Persiapan Ujian',
+                'icon' => 'fas fa-graduation-cap',
+                'focus' => 'Sukses Akademik',
+                'description' => 'Bimbingan terarah mempersiapkan siswa menghadapi kelulusan.',
+                'sort_order' => 5,
+            ]
+        ];
+        foreach ($academicSubjects as $subject) {
+            AcademicSubject::create($subject);
+        }
+
+        // 9. Seed Extracurriculars
+        Extracurricular::truncate();
+        $extracurriculars = [
+            [
+                'name' => 'Berkuda',
+                'category' => 'Sunnah Rasul',
+                'description' => 'Melatih keberanian, keseimbangan, dan ketangkasan fisik.',
+                'icon' => '🐎',
+                'image_path' => 'https://images.unsplash.com/photo-1553284965-83fd3e82fa52?auto=format&fit=crop&w=400&q=80',
+                'sort_order' => 1,
+            ],
+            [
+                'name' => 'Al-Quran',
+                'category' => 'Tahfidz & Tahsin',
+                'description' => 'Tahsin makhraj dan hafalan Juz 30 dengan menyenangkan.',
+                'icon' => '📖',
+                'image_path' => 'https://images.unsplash.com/photo-1609599006353-e629f1dca0a1?auto=format&fit=crop&w=400&q=80',
+                'sort_order' => 2,
+            ],
+            [
+                'name' => 'Berenang',
+                'category' => 'Sunnah Rasul',
+                'description' => 'Melatih motorik, pernafasan, dan keselamatan di air.',
+                'icon' => '🏊',
+                'image_path' => 'https://images.unsplash.com/photo-1519766304817-4f37bda74a27?auto=format&fit=crop&w=400&q=80',
+                'sort_order' => 3,
+            ],
+            [
+                'name' => 'Panahan',
+                'category' => 'Sunnah Rasul',
+                'description' => 'Melatih fokus, konsentrasi, ketenangan, dan akurasi.',
+                'icon' => '🏹',
+                'image_path' => 'assets/gallery/panah.jpeg',
+                'sort_order' => 4,
+            ],
+            [
+                'name' => 'Taekwondo',
+                'category' => 'Fisik & Disiplin',
+                'description' => 'Membentuk fisik yang kuat, bela diri, dan disiplin diri.',
+                'icon' => '🥋',
+                'image_path' => 'assets/gallery/taekwondo.jpeg',
+                'sort_order' => 5,
+            ]
+        ];
+        foreach ($extracurriculars as $ekskul) {
+            Extracurricular::create($ekskul);
         }
     }
 }

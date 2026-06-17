@@ -286,18 +286,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- CTA -->
-        <div class="text-center bg-gradient-to-r from-yellow-400 to-yellow-400 rounded-2xl p-8 max-w-3xl mx-auto">
-            <h3 class="text-2xl font-bold text-blue-900 mb-3">Siap bergabung dengan keluarga besar HSG ABA?</h3>
-            <p class="text-blue-800 mb-4">Daftar sekarang dan dapatkan konsultasi gratis!</p>
-            <a href="https://wa.me/{{ $settings->whatsapp_number ?? '628121496464' }}?text=Hallo%20HSG%20ABA!%20Saya%20ingin%20mendaftar%20dan%20konsultasi%20tentang%20program%20homeschooling." 
-               target="_blank" 
-               class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-yellow-400 hover:border-yellow-300">
-                <i class="fab fa-whatsapp text-xl text-green-400"></i>
-                Daftar Sekarang 
-            </a>
-        </div>
     </div>
 </section>
 

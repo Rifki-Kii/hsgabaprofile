@@ -146,12 +146,24 @@
                     <span>Galeri Momen</span>
                 </a>
 
+
+                <a href="{{ route('admin.academic-subjects') }}" 
+                   class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 {{ request()->routeIs('admin.academic-subjects') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-800 hover:text-slate-200' }}">
+                    <i class="fa-solid fa-book-open text-sm"></i>
+                    <span>Pelajaran Akademik</span>
+                </a>
+
+                <a href="{{ route('admin.extracurriculars') }}" 
+                   class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 {{ request()->routeIs('admin.extracurriculars') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-800 hover:text-slate-200' }}">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <span>Ekstrakurikuler</span>
+                </a>
+
                 <a href="{{ route('admin.faqs') }}" 
                    class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 {{ request()->routeIs('admin.faqs') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'hover:bg-slate-800 hover:text-slate-200' }}">
                     <i class="fa-solid fa-circle-question text-sm"></i>
                     <span>FAQ Tanya Jawab</span>
                 </a>
-
                 <div class="pt-3 pb-1.5 px-3 text-[9px] font-bold uppercase tracking-wider text-slate-600">Pengaturan</div>
 
                 <a href="{{ route('admin.settings') }}" 

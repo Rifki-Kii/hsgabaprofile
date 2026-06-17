@@ -67,88 +67,75 @@
                 Belum ada program unggulan.
             </div>
             @endforelse
-        </div>
-
-        <!-- Pelajaran Akademik -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 mb-16">
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-blue-700 mb-2">📚 Pelajaran Akademik</h3>
-                <div class="w-20 h-0.5 bg-yellow-400 mx-auto"></div>
+        </div>        <!-- Pelajaran Akademik -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-16">
+            <div class="text-center mb-8">
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Kurikulum</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">📚 Pelajaran Akademik</h3>
+                <p class="text-sm text-gray-500 mt-1">Mata pelajaran utama dengan pendekatan belajar aktif dan menyenangkan</p>
+                <div class="w-12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></div>
             </div>
-            <div class="flex flex-wrap justify-center gap-3">
-                <span
-                    class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300">Matematika</span>
-                <span
-                    class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300">Bahasa
-                    Indonesia</span>
-                <span
-                    class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300">Bahasa
-                    Inggris</span>
-                <span
-                    class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300">IPA</span>
-                <span
-                    class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors duration-300">Persiapan
-                    UN</span>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                @forelse($academicSubjects as $subject)
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-blue-100 hover:bg-white hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl">
+                            <i class="{{ $subject->icon }}"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mt-4">{{ $subject->name }}</h4>
+                        <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-800 inline-block my-2">{{ $subject->focus }}</span>
+                        <p class="text-xs text-gray-600 leading-relaxed">{{ $subject->description }}</p>
+                    </div>
+                </div>
+                @empty
+                <div class="col-span-full text-center text-gray-500 py-8">
+                    Belum ada data pelajaran akademik.
+                </div>
+                @endforelse
             </div>
         </div>
 
         <!-- Ekstrakurikuler -->
         <div>
             <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-blue-700 mb-2">⭐ Ekstrakurikuler</h3>
-                <div class="w-20 h-0.5 bg-yellow-400 mx-auto"></div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Pengembangan Minat & Bakat</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">⭐ Kegiatan Ekstrakurikuler</h3>
+                <p class="text-sm text-gray-500 mt-1">Kegiatan penunjang untuk melatih fisik, mental, spiritual, dan kemandirian siswa</p>
+                <div class="w-12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="text-center group cursor-pointer">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300 mx-auto">
-                        <span class="text-2xl">🐎</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                @forelse($extracurriculars as $ekskul)
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                    <div>
+                        <div class="relative h-32 w-full bg-slate-900 overflow-hidden">
+                            @if ($ekskul->image_path)
+                                @if(str_starts_with($ekskul->image_path, 'http'))
+                                    <img src="{{ $ekskul->image_path }}" class="w-full h-full object-cover" alt="{{ $ekskul->name }}">
+                                @else
+                                    <img src="{{ asset($ekskul->image_path) }}" class="w-full h-full object-cover" alt="{{ $ekskul->name }}">
+                                @endif
+                            @else
+                                <div class="w-full h-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                    <i class="fa-solid fa-image text-xl"></i>
+                                </div>
+                            @endif
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <span class="absolute bottom-2 left-2 text-xl">{{ $ekskul->icon }}</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="text-base font-bold text-gray-800">{{ $ekskul->name }}</h4>
+                            <span class="text-[9px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-100 inline-block my-1.5">{{ $ekskul->category }}</span>
+                            <p class="text-xs text-gray-500 leading-relaxed mt-1">{{ $ekskul->description }}</p>
+                        </div>
                     </div>
-                    <p class="text-sm font-semibold text-gray-700 mt-2 group-hover:text-blue-600 transition-colors">
-                        Berkuda</p>
-                    <p class="text-xs text-gray-400">Sunnah Rasul</p>
                 </div>
-
-                <div class="text-center group cursor-pointer">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300 mx-auto">
-                        <span class="text-2xl">📖</span>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-700 mt-2 group-hover:text-blue-600 transition-colors">
-                        Al-Quran</p>
-                    <p class="text-xs text-gray-400">Tahsin Juz 30</p>
+                @empty
+                <div class="col-span-full text-center text-gray-500 py-8">
+                    Belum ada data ekstrakurikuler.
                 </div>
-
-                <div class="text-center group cursor-pointer">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300 mx-auto">
-                        <span class="text-2xl">🏊</span>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-700 mt-2 group-hover:text-blue-600 transition-colors">
-                        Berenang</p>
-                    <p class="text-xs text-gray-400">Sunnah Rasul</p>
-                </div>
-
-                <div class="text-center group cursor-pointer">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300 mx-auto">
-                        <span class="text-2xl">🏹</span>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-700 mt-2 group-hover:text-blue-600 transition-colors">
-                        Panahan</p>
-                    <p class="text-xs text-gray-400">Sunnah Rasul</p>
-                </div>
-
-                <div class="text-center group cursor-pointer">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300 mx-auto">
-                        <span class="text-2xl">🥋</span>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-700 mt-2 group-hover:text-blue-600 transition-colors">
-                        Taekwondo</p>
-                    <p class="text-xs text-gray-400">Strong Muslim</p>
-                </div>
+                @endforelse
             </div>
         </div>
 
